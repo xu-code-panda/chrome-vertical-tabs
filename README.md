@@ -1,7 +1,5 @@
 # 垂直标签页 Chrome 扩展
 
-参考 [guokai.dev](https://guokai.dev/) 的 [Vertical Tabs in Side Panel](https://chromewebstore.google.com/detail/vertical-tabs-in-side-pan/akahnknmcbmgodngfjcflnaljdbhnlfo) 实现的 Chrome 侧边栏垂直标签页扩展。
-
 ## 功能特性
 
 ### 基础功能
