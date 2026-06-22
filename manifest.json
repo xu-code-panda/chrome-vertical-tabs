@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "垂直标签页",
+  "version": "1.0.0",
+  "description": "在浏览器侧边栏中垂直显示和管理标签页，支持搜索、标签组、拖拽排序",
+  "permissions": ["sidePanel", "tabs", "tabGroups", "storage", "favicon", "sessions"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
+  "action": {
+    "default_title": "垂直标签页",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "open-sidepanel": {
+      "suggested_key": {
+        "default": "Alt+V",
+        "mac": "Alt+V"
+      },
+      "description": "打开垂直标签页侧边栏"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

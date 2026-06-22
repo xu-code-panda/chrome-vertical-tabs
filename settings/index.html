@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>垂直标签页 - 设置</title>
+  <link rel="stylesheet" href="../sidepanel/sidepanel.css" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <div id="settings-root" class="settings-page-root settings-shell">
+    <div class="settings-layout">
+      <nav class="settings-nav">
+        <div class="settings-nav-title">设置</div>
+        <button type="button" class="settings-nav-item" data-settings-page="font">字体设置</button>
+        <button type="button" class="settings-nav-item" data-settings-page="tabs">标签页设置</button>
+        <button type="button" class="settings-nav-item" data-settings-page="theme">主题设置</button>
+        <button type="button" class="settings-nav-item" data-settings-page="display">显示方式</button>
+        <button type="button" class="settings-nav-item" data-settings-page="sponsor">支持作者</button>
+      </nav>
+      <div class="settings-main">
+        <div class="settings-main-header">
+          <button id="btn-back-from-settings" class="settings-back-btn" type="button" aria-label="关闭设置">←</button>
+          <h2 id="settings-page-title">设置</h2>
+          <button id="btn-close-settings" class="settings-close-btn" type="button" aria-label="关闭设置">×</button>
+        </div>
+        <div class="settings-main-body">
+          <div id="settings-empty-page" class="settings-page settings-empty">
+            <div class="settings-empty-card">
+              <div class="settings-empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28">
+                  <path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96a7.035 7.035 0 00-1.63-.94l-.36-2.54A.484.484 0 0014 2h-4c-.25 0-.46.18-.49.42l-.36 2.54c-.59.24-1.13.56-1.63.94l-2.39-.96a.488.488 0 00-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.04.7 1.63.94l.36 2.54c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.36-2.54c.59-.24 1.13-.56 1.63-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 00-.12-.61l-2.03-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/>
+                </svg>
+              </div>
+              <h3 class="settings-empty-title">选择设置项开始配置</h3>
+              <p class="settings-empty-hint">修改会自动保存，并同步到侧边栏标签页</p>
+              <div class="settings-empty-quick">
+                <button type="button" class="settings-empty-quick-btn" data-settings-page="font">字体设置</button>
+                <button type="button" class="settings-empty-quick-btn" data-settings-page="tabs">标签页设置</button>
+                <button type="button" class="settings-empty-quick-btn" data-settings-page="theme">主题设置</button>
+                <button type="button" class="settings-empty-quick-btn" data-settings-page="display">显示方式</button>
+                <button type="button" class="settings-empty-quick-btn" data-settings-page="sponsor">支持作者</button>
+              </div>
+            </div>
+          </div>
+          <div id="settings-font-page" class="settings-page settings-compact-page hidden">
+            <section class="settings-block">
+              <div class="settings-block-header">
+                <h3 class="settings-block-title">标签页</h3>
+                <button id="btn-reset-tab-appearance" class="settings-inline-reset" type="button">恢复默认</button>
+              </div>
+              <div class="settings-field-list settings-field-list-short">
+                <div class="settings-field">
+                  <label for="setting-tab-font">字体</label>
+                  <select id="setting-tab-font">
+                    <option value="system">系统默认</option>
+                    <option value="pingfang">苹方 / 微软雅黑</option>
+                    <option value="songti">宋体</option>
+                    <option value="serif">衬线体</option>
+                    <option value="mono">等宽字体</option>
+                  </select>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-tab-size">字号</label>
+                  <select id="setting-tab-size">
+                    <option value="10">10px</option>
+                    <option value="11">11px</option>
+                    <option value="12">12px</option>
+                    <option value="13">13px</option>
+                    <option value="14">14px</option>
+                    <option value="15">15px</option>
+                    <option value="16">16px</option>
+                    <option value="18">18px</option>
+                    <option value="20">20px</option>
+                  </select>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-tab-color">颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-tab-color" type="color" aria-label="标签页文字颜色" />
+                    <button id="btn-tab-color-default" class="settings-default-btn" type="button">跟随主题</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <div class="settings-block-header">
+                <h3 class="settings-block-title">分组</h3>
+                <button id="btn-reset-group-appearance" class="settings-inline-reset" type="button">恢复默认</button>
+              </div>
+              <div class="settings-field-list settings-field-list-short">
+                <div class="settings-field">
+                  <label for="setting-group-font">字体</label>
+                  <select id="setting-group-font">
+                    <option value="system">系统默认</option>
+                    <option value="pingfang">苹方 / 微软雅黑</option>
+                    <option value="songti">宋体</option>
+                    <option value="serif">衬线体</option>
+                    <option value="mono">等宽字体</option>
+                  </select>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-group-size">字号</label>
+                  <select id="setting-group-size">
+                    <option value="10">10px</option>
+                    <option value="11">11px</option>
+                    <option value="12">12px</option>
+                    <option value="13">13px</option>
+                    <option value="14">14px</option>
+                    <option value="15">15px</option>
+                    <option value="16">16px</option>
+                    <option value="18">18px</option>
+                  </select>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-group-color">颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-group-color" type="color" aria-label="分组标题颜色" />
+                    <span id="setting-group-color-value" class="settings-color-value"></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="settings-tabs-page" class="settings-page settings-compact-page hidden">
+            <section class="settings-block">
+              <h3 class="settings-block-title">标签页显示</h3>
+              <div class="settings-toggle-list">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示完整网址</div>
+                    <div class="settings-toggle-desc">标题下方显示完整网址</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-full-url" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">隐藏标签页图标</div>
+                    <div class="settings-toggle-desc">不显示网站 favicon</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-hide-tab-icons" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">彩色圆点替代图标</div>
+                    <div class="settings-toggle-desc">按网址生成彩色圆点</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-colored-dots" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示标签页索引</div>
+                    <div class="settings-toggle-desc">便于 Ctrl/Cmd + 数字快速切换</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-tab-index" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                    <div id="setting-tab-index-position" class="settings-segmented">
+                      <button type="button" class="settings-segmented-btn" data-value="left">左</button>
+                      <button type="button" class="settings-segmented-btn" data-value="right">右</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <h3 class="settings-block-title">工具栏</h3>
+              <div class="settings-toggle-list">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示顶部标题栏</div>
+                    <div class="settings-toggle-desc">「标签页」标题及新建、折叠分组按钮</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-header" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示「新建标签页」行</div>
+                    <div class="settings-toggle-desc">列表底部的快捷新建入口</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-new-tab-row" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示搜索框</div>
+                    <div class="settings-toggle-desc">底部搜索标签页</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-search-box" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">显示设置按钮</div>
+                    <div class="settings-toggle-desc">底部齿轮图标；隐藏后可通过右键打开设置</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-show-settings-button" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <h3 class="settings-block-title">标签</h3>
+              <div class="settings-toggle-list">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-info">
+                    <div class="settings-toggle-title">启用标签功能</div>
+                    <div class="settings-toggle-desc">为标签页添加自定义标签，支持按标签搜索和分组</div>
+                  </div>
+                  <div class="settings-toggle-controls">
+                    <label class="settings-switch">
+                      <input id="setting-enable-tab-tags" type="checkbox" />
+                      <span class="settings-switch-slider" aria-hidden="true"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <h3 class="settings-block-title">布局</h3>
+              <div class="settings-field settings-spacing-field">
+                <div class="settings-spacing-header">
+                  <label for="setting-tab-spacing">标签间距</label>
+                  <span id="setting-tab-spacing-value" class="settings-spacing-value">2px</span>
+                </div>
+                <input
+                  id="setting-tab-spacing"
+                  class="settings-range"
+                  type="range"
+                  min="-8"
+                  max="20"
+                  step="1"
+                  aria-label="标签间距"
+                />
+                <p class="settings-spacing-hint">左右拖动滑块调节间距；0 为紧凑，向左可更紧密（最大 -8px）</p>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <h3 class="settings-block-title">拖拽指示器</h3>
+              <p class="settings-block-desc">自定义拖拽标签页时的视觉反馈样式</p>
+              <div class="settings-field-list settings-field-list-wide">
+                <div class="settings-field">
+                  <label for="setting-drag-indicator-width">线条粗细</label>
+                  <div class="settings-range-field">
+                    <input
+                      id="setting-drag-indicator-width"
+                      class="settings-range"
+                      type="range"
+                      min="1"
+                      max="8"
+                      step="1"
+                      aria-label="拖拽线条粗细"
+                    />
+                    <span id="setting-drag-indicator-width-value" class="settings-range-value">4px</span>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-drag-indicator-color">线条颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-drag-indicator-color" type="color" />
+                    <button type="button" id="btn-drag-indicator-color-default" class="settings-default-btn">跟随主题</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-drag-group-outline-width">分组框粗细</label>
+                  <div class="settings-range-field">
+                    <input
+                      id="setting-drag-group-outline-width"
+                      class="settings-range"
+                      type="range"
+                      min="1"
+                      max="8"
+                      step="1"
+                      aria-label="分组框粗细"
+                    />
+                    <span id="setting-drag-group-outline-width-value" class="settings-range-value">3px</span>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-drag-group-outline-color">分组框颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-drag-group-outline-color" type="color" />
+                    <button type="button" id="btn-drag-group-outline-color-default" class="settings-default-btn">跟随主题</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="settings-theme-page" class="settings-page settings-compact-page hidden">
+            <section class="settings-block">
+              <h3 class="settings-block-title">主题模式</h3>
+              <div class="settings-radio-list">
+                <label class="settings-radio-option">
+                  <input type="radio" name="theme-mode" value="system" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">跟随系统</span>
+                    <span class="settings-radio-desc">根据系统外观自动切换</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="theme-mode" value="light" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">浅色模式</span>
+                    <span class="settings-radio-desc">始终使用浅色界面</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="theme-mode" value="dark" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">深色模式</span>
+                    <span class="settings-radio-desc">始终使用深色界面</span>
+                  </span>
+                </label>
+              </div>
+            </section>
+
+            <section class="settings-block">
+              <div class="settings-block-header">
+                <h3 class="settings-block-title">标签栏</h3>
+                <button id="btn-reset-theme-colors" class="settings-inline-reset" type="button">恢复全部默认</button>
+              </div>
+              <p class="settings-block-desc">仅影响侧边栏标签列表区域</p>
+              <div class="settings-field-list settings-field-list-wide">
+                <div class="settings-field">
+                  <label for="setting-theme-tab-bar-bg">背景颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-tab-bar-bg" type="color" data-theme-color="tabBarBackground" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="tabBarBackground">恢复默认</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-bg-image">背景图片</label>
+                  <div class="settings-image-field">
+                    <input id="setting-theme-bg-image" type="file" accept="image/*" hidden />
+                    <button type="button" id="btn-theme-bg-image-pick" class="settings-default-btn">选择图片</button>
+                    <button type="button" id="btn-theme-bg-image-adjust" class="settings-default-btn hidden">调整位置</button>
+                    <button type="button" id="btn-theme-bg-image-clear" class="settings-default-btn hidden">移除图片</button>
+                  </div>
+                  <p class="settings-field-hint">上传后可拖拽选择显示区域</p>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-menu-text">菜单文字颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-menu-text" type="color" data-theme-color="menuTextColor" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="menuTextColor">恢复默认</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-tab-active">选中标签背景</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-tab-active" type="color" data-theme-color="tabActiveBg" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="tabActiveBg">恢复默认</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-tab-hover">标签悬停背景</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-tab-hover" type="color" data-theme-color="tabHoverBg" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="tabHoverBg">恢复默认</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-tab-close">关闭按钮颜色</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-tab-close" type="color" data-theme-color="tabCloseColor" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="tabCloseColor">恢复默认</button>
+                  </div>
+                </div>
+                <div class="settings-field">
+                  <label for="setting-theme-tab-close-hover">关闭按钮悬停</label>
+                  <div class="settings-color-field">
+                    <input id="setting-theme-tab-close-hover" type="color" data-theme-color="tabCloseHoverColor" />
+                    <button type="button" class="settings-default-btn" data-theme-color-reset="tabCloseHoverColor">恢复默认</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="settings-display-page" class="settings-page settings-compact-page hidden">
+            <section class="settings-block">
+              <h3 class="settings-block-title">显示方式</h3>
+              <p class="settings-block-desc">选择侧边栏标签页的排列模式</p>
+              <div class="settings-radio-list">
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="mixed" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">混合</span>
+                    <span class="settings-radio-desc">保留标签页与分组，按当前顺序显示</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="list" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">列表</span>
+                    <span class="settings-radio-desc">不显示分组，所有标签页同级排列</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="groups" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">分组</span>
+                    <span class="settings-radio-desc">分组在上，未分组标签归入「未分组」并放在最后</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="site" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">网站</span>
+                    <span class="settings-radio-desc">按域名自动归拢，同站点标签显示在一起</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="tags" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">标签</span>
+                    <span class="settings-radio-desc">按自定义标签分组，未标记的归入「未标记」</span>
+                  </span>
+                </label>
+                <label class="settings-radio-option">
+                  <input type="radio" name="display-mode" value="detailed" />
+                  <span class="settings-radio-text">
+                    <span class="settings-radio-title">详细</span>
+                    <span class="settings-radio-desc">显示完整标题，下方显示网址</span>
+                  </span>
+                </label>
+              </div>
+            </section>
+          </div>
+
+          <div id="settings-sponsor-page" class="settings-page hidden">
+            <div class="sponsor-grid">
+              <div class="sponsor-card">
+                <div class="sponsor-card-header">
+                  <span class="sponsor-card-title">微信支付</span>
+                </div>
+                <div class="sponsor-qr-wrapper">
+                  <img src="images/wechat-qr.png" alt="微信支付二维码" class="sponsor-qr-img" onerror="this.parentElement.innerHTML='<div class=\'sponsor-qr-placeholder\'>请将微信收款码<br/>保存为<br/>settings/images/wechat-qr.png</div>'" />
+                </div>
+                <p class="sponsor-hint">打开微信扫一扫即可支持 ☕</p>
+              </div>
+            </div>
+
+            <div class="sponsor-other-list">
+              <div class="sponsor-other-item">
+                <span class="sponsor-other-icon">⭐</span>
+                <div class="sponsor-other-text">
+                  <div class="sponsor-other-title">给个好评</div>
+                  <div class="sponsor-other-desc">在 Chrome 应用商店留下你的反馈</div>
+                </div>
+              </div>
+              <div class="sponsor-other-item">
+                <span class="sponsor-other-icon">🐛</span>
+                <div class="sponsor-other-text">
+                  <div class="sponsor-other-title">反馈问题</div>
+                  <div class="sponsor-other-desc">帮助改进这个扩展</div>
+                </div>
+              </div>
+              <div class="sponsor-other-item">
+                <span class="sponsor-other-icon">📢</span>
+                <div class="sponsor-other-text">
+                  <div class="sponsor-other-title">推荐给朋友</div>
+                  <div class="sponsor-other-desc">让更多人享受垂直标签页</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="settings.js"></script>
+</body>
+</html>

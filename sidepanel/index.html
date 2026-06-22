@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>垂直标签页</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div id="app-shell" class="app-shell" data-color-scheme="light">
+  <header id="app-header" class="header">
+    <h1 class="header-title">标签页</h1>
+    <div class="header-actions">
+      <button id="btn-new-tab" class="icon-btn" title="新建标签页" aria-label="新建标签页">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </button>
+      <button id="btn-collapse-all" class="icon-btn" title="折叠所有分组" aria-label="折叠所有分组">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 10l5 5 5-5H7z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="tab-panel">
+    <main id="tab-list" class="tab-list" role="list"></main>
+    <button type="button" id="btn-new-tab-row" class="new-tab-row" aria-label="新建标签页">
+      <span class="new-tab-row-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </span>
+      <span class="new-tab-label">新建标签页</span>
+      <span id="new-tab-shortcut" class="new-tab-shortcut"></span>
+    </button>
+  </div>
+
+  <div id="context-menu" class="context-menu hidden" role="menu"></div>
+
+  <footer class="footer">
+    <div class="footer-toolbar">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16">
+          <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
+        </svg>
+        <input id="search-input" type="search" placeholder="搜索标签页..." autocomplete="off" spellcheck="false" />
+        <button id="btn-clear-search" class="clear-btn hidden" title="清除搜索" aria-label="清除搜索">×</button>
+      </div>
+      <div id="tag-filter-container" class="tag-filter-container">
+        <button id="btn-tag-filter-toggle" class="tag-filter-toggle" type="button" title="标签过滤器" aria-label="标签过滤器">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c.67 0 1.27-.33 1.63-.84L21 12l-3.37-6.16zM16 19H5V7h11l3 6-3 6z"/></svg>
+        </button>
+        <div id="tag-filter-dropdown" class="tag-filter-dropdown hidden">
+          <div class="tag-filter-header">标签过滤器</div>
+          <div id="tag-filter-list" class="tag-filter-list"></div>
+        </div>
+      </div>
+      <button id="btn-settings" class="icon-btn settings-btn" type="button" title="设置" aria-label="设置">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96a7.035 7.035 0 00-1.63-.94l-.36-2.54A.484.484 0 0014 2h-4c-.25 0-.46.18-.49.42l-.36 2.54c-.59.24-1.13.56-1.63.94l-2.39-.96a.488.488 0 00-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.04.7 1.63.94l.36 2.54c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.36-2.54c.59-.24 1.13-.56 1.63-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 00-.12-.61l-2.03-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/>
+        </svg>
+      </button>
+    </div>
+    <div id="tab-count" class="tab-count"></div>
+  </footer>
+  </div>
+
+  <script src="sidepanel.js" type="module"></script>
+</body>
+</html>
